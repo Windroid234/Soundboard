@@ -1,0 +1,25 @@
+# CMake / Visual Studio Build Files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.dir/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Binaries / Outputs
+Debug/
+Release/
+x64/
+*.exe
+*.dll
+*.lib
+*.zip
+
+# User / AppData Configs
+.vs/
+portable.txt
+sounds/
+hotkeys.ini
+config.ini
