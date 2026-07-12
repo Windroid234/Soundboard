@@ -148,15 +148,26 @@ void SoundManager::LoadFromDirectory(const std::wstring& directory) {
 
 void SoundManager::AddSound(const std::wstring& path) {
     std::filesystem::path p(path);
+    std::filesystem::path targetDir(soundsDir);
+    std::wstring finalPath = path;
+    
+    std::filesystem::path destPath = targetDir / p.filename();
+    if (std::filesystem::absolute(p) != std::filesystem::absolute(destPath)) {
+        try {
+            std::filesystem::copy_file(p, destPath, std::filesystem::copy_options::overwrite_existing);
+            finalPath = destPath.wstring();
+        } catch(...) {}
+    }
+
     auto item = std::make_unique<SoundItem>();
     item->name = p.stem().wstring();
-    item->path = path;
+    item->path = finalPath;
     item->loaded = false;
     item->modifiers = 0;
     item->vk = 0;
 
     if (engineInitialized) {
-        std::string utf8Path = WStringToUTF8(path);
+        std::string utf8Path = WStringToUTF8(finalPath);
         bool mainLoaded = (ma_sound_init_from_file(&engineMain, utf8Path.c_str(), MA_SOUND_FLAG_DECODE, NULL, NULL, &item->soundMain) == MA_SUCCESS);
         bool localLoaded = (ma_sound_init_from_file(&engineLocal, utf8Path.c_str(), MA_SOUND_FLAG_DECODE, NULL, NULL, &item->soundLocal) == MA_SUCCESS);
         if (mainLoaded && localLoaded) {
