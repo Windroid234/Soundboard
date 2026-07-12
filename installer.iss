@@ -1,6 +1,6 @@
 [Setup]
 AppName=Soundboard
-AppVersion=1.0
+AppVersion=1.0.1
 DefaultDirName={autopf}\Soundboard
 DefaultGroupName=Soundboard
 UninstallDisplayIcon={app}\Soundboard.exe
