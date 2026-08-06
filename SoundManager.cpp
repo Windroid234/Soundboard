@@ -266,7 +266,7 @@ void SoundManager::SetConfigState(float micVol, float localVol, bool passThrough
 }
 
 void SoundManager::SaveConfig() {
-    std::wofstream file(configPath);
+    std::wofstream file(configPath.c_str());
     if (file.is_open()) {
         file << L"MicVol=" << savedMicVol << L"\n";
         file << L"LocalVol=" << savedLocalVol << L"\n";
@@ -282,7 +282,7 @@ void SoundManager::SaveConfig() {
 }
 
 void SoundManager::LoadConfig() {
-    std::wifstream file(configPath);
+    std::wifstream file(configPath.c_str());
     if (file.is_open()) {
         std::wstring line;
         bool inHotkeys = false;

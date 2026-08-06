@@ -11,7 +11,7 @@ OutputBaseFilename=Soundboard_Setup
 PrivilegesRequired=admin
 
 [Files]
-Source: "Debug\Soundboard.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Release\Soundboard.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{autoprograms}\Soundboard"; Filename: "{app}\Soundboard.exe"
