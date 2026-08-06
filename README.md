@@ -1,7 +1,7 @@
 # Soundboard
 
 C++ soundboard for Windows.
-
+Note: app requires Vcredits to work.
 ## Features
 - Plays audio to mic and headphones simultaneously
 - Independent volume sliders
